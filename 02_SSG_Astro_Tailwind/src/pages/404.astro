@@ -1,0 +1,32 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Container from '@components/container.astro'
+import Link from '@components/ui/link.astro'
+---
+
+<Layout title="404 Not Found">
+	<Container>
+		<div class="flex min-h-[calc(100vh-20rem)] items-center justify-center">
+			<div class="mt-16 text-center">
+				<h1
+					class="bg-gradient-to-b from-light100 to-light400 bg-clip-text text-6xl font-bold text-transparent lg:text-9xl lg:tracking-tight"
+				>
+					404
+				</h1>
+				<p class="mt-4 text-lg font-medium text-light400 lg:text-2xl">
+					The page you are looking for doesn't exist.
+				</p>
+				<div class="mt-10">
+					<Link
+						href="/"
+						target="_blank"
+						class="flex items-center justify-center gap-1 bg-yellow50 hover:bg-yellow40"
+						rel="noopener"
+					>
+						Back to Home
+					</Link>
+				</div>
+			</div>
+		</div>
+	</Container>
+</Layout>

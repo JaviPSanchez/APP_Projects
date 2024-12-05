@@ -1,0 +1,59 @@
+---
+import Card from "@components/card.astro";
+import Container from "@components/container.astro";
+import Review from "@components/review.astro";
+import { getCollection } from 'astro:content';
+
+// Get the blog collection and filter only published articles
+const allArticles = await getCollection('blog', ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
+
+// Sort articles by publishDate and take the first 5
+const latestArticles = allArticles
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())
+  .slice(0, 5);
+---
+
+<Container>
+  <div class="mt-24">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center text-light100">
+      Latest <span class="text-yellow40">Articles</span>
+    </h2>
+    <p class="text-lg mt-4 text-light100 text-center">
+      Here are my latest articles, have a look!
+    </p>
+  </div>
+</Container>
+
+<div class="mt-10 relative overflow-x-clip">
+  <div class="relative md:flex gap-10 overflow-hidden py-5 group">
+    <div
+      class="md:motion-safe:animate-marquee w-auto py-5 overflow-x-auto flex flex-nowrap min-w-full shrink-0 items-stretch gap-10 snap-x snap-mandatory px-5">
+      {latestArticles.map((article) => (
+        <a href={`/blog/${article.slug}`} class="block">
+          <Review 
+            name={article.data.title} 
+            title={article.data.author} 
+            image={article.data.image?.src || "/default-image.jpg"} 
+            text={article.data.snippet}
+          />
+        </a>
+      ))}
+    </div>
+    <!-- Shadow DOM clone for smooth animation -->
+    <div
+      class="md:motion-safe:animate-marquee hidden md:motion-reduce:hidden md:flex min-w-full shrink-0 items-center gap-10">
+      {latestArticles.map((article) => (
+        <a href={`/blog/${article.slug}`} class="block">
+          <Review 
+            name={article.data.title} 
+            title={article.data.author} 
+            image={article.data.image?.src || "/default-image.jpg"} 
+            text={article.data.snippet}
+          />
+        </a>
+      ))}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+---
+import { getCollection } from 'astro:content'
+import { Picture } from 'astro:assets'
+import Layout from '@layouts/Layout.astro'
+import Container from '@components/container.astro'
+import Sectionhead from '@components/sectionhead.astro'
+import Link from '@components/ui/link.astro'
+import EmployeeImg from '../assets/employee.jpg'
+import Employee from '../assets/javips.jpg'
+import Logos from '@components/logos.astro'
+import { Icon } from 'astro-icon/components'
+// import Cta from '@components/cta.astro'
+
+
+// console.log(publishedTeamMembers)
+---
+
+<!-- <Layout title="About" footerMargin={false} footerVisibility={false}> -->
+	<!-- <Container class:list={'items-center'}> -->
+		<Sectionhead>
+			<Fragment slot="badge">ABOUT ME</Fragment>
+			<Fragment slot="title">Pasionate about Data Technology!</Fragment>
+			<Fragment slot="desc">
+				👋 Hi, I`m Javier Palomino Sanchez
+
+I'm a software engineer with a serious passion for Data Engineering. After 5+ years in the game, I've got some cool stories from aerospace, automotive, and healthcare under my belt!
+
+			</Fragment>
+			<Fragment slot="desc" class="my-10">
+
+My journey's been a wild ride - from leading data projects at Renault to shaping digital strategy as CTO at Lurauto. Now, I'm channeling my inner entrepreneur as the founder of Atalaya Digital. It's all about helping small businesses crush it with cloud-based data solutions!
+
+I'm a total tech geek who's always tinkering with serverless architectures and the latest gadgets. My globetrotting career (hello, U.S., Ireland, and France!) has taught me a ton, both technically and personally. Being open-minded is my secret sauce!
+			</Fragment>
+		</Sectionhead>
+		
+		</div>
+
+		<div class="mx-auto mt-24 grid gap-10 sm:grid-cols-2">
+			<div class="relative">
+				<div
+					class="absolute right-0 top-1/3 -z-10 h-96 w-96 bg-gradient-radial from-indigo-200 blur-2xl md:block"
+				>
+				</div>
+				<div
+					class="absolute left-10 top-1/4 -z-10 hidden h-44 w-44 bg-gradient-radial from-indigo-200 blur-2xl md:block"
+				>
+				</div>
+				<Picture
+					formats={['avif', 'webp']}
+					src={Employee}
+					alt="Me"
+					class="mx-auto w-full max-w-sm h-auto rounded-xl shadow-2xl"
+					loading="lazy"
+				/>
+			</div>
+			<div class="place-self-center">
+				<h2 class="-mt-2 text-5xl tracking-tight text-gray-800">
+					<span class="text-light100">My</span>
+					{' '}
+					<strong class="text-yellow40">Values</strong>
+				</h2>
+				<p class="mt-4 max-w-xl text-lg leading-relaxed text-light100">
+					We're a multi-cultural team from around the world! We come from diverse backgrounds,
+					bringing different personalities, experiences and skills to the job. This is what makes
+					our team so special.
+				</p>
+				<ul class="mt-6 grid gap-y-4 text-left">
+					<li class="flex items-center gap-3 text-yellow50">
+						<Icon name="ph:check-circle-fill" class="h-5 w-5" />
+
+						<span class="text-slate-400">Intelligent Task Management</span>
+					</li>
+
+					<li class="flex items-center gap-3 text-yellow50">
+						<Icon name="ph:check-circle-fill" class="h-5 w-5" />
+
+						<span class="text-slate-400">Real-time Collaboration</span>
+					</li>
+
+					<li class="flex items-center gap-3 text-yellow50">
+						<Icon name="ph:check-circle-fill" class="h-5 w-5" />
+
+						<span class="text-slate-400">Data Security & Privacy</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- <div class="mt-24">
+			<h2 class="text-center text-4xl text-light100 lg:text-5xl lg:tracking-tight">
+				Core <span class="font-bold text-yellow40">Team</span>
+			</h2>
+			<p class="mt-4 text-center text-lg text-light100">Atalaya Digital is built by:</p>
+		</div>
+
+		<div class="mx-auto mt-12 flex flex-row items-center justify-center">
+			{
+				publishedTeamMembers.map((teamMemberEntry) => (
+					<div class="group mb-6 flex items-center justify-center">
+						<div class="aspect-square w-full">
+							<Picture
+								src={Employee}
+								alt={teamMemberEntry?.data?.avatar?.alt || 'Team Member'}
+								loading="lazy"
+								width={200}
+								height={200}
+								formats={['avif', 'webp']}
+								class="h-full w-full rounded-full bg-white object-cover transition group-hover:-translate-y-1 group-hover:shadow-xl"
+							/>
+						</div>
+
+						<div class="mt-4 text-center">
+							<h2 class="text-lg text-light100">{teamMemberEntry.data.name}</h2>
+							<h3 class="text-sm text-yellow50">{teamMemberEntry.data.title}</h3>
+						</div>
+					</div>
+				))
+			}
+		</div> -->
+	<!-- </Container> -->
+	<!-- <Cta /> -->
+<!-- </Layout> -->

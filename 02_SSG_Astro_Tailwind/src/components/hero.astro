@@ -1,0 +1,73 @@
+---
+import { Picture } from 'astro:assets'
+import { heroDashboard } from '@assets/index'
+import Container from '@components/container.astro'
+import Link from './ui/link.astro'
+import LottieAnimation from "astro-integration-lottie/Lottie.astro";
+---
+
+<div class="overflow-x-clip">
+	<Container>
+		<main class="relative grid place-items-center lg:grid-cols-3">
+			<!-- <div
+				class="absolute right-0 top-0 -z-10 h-96 w-96 bg-gradient-radial from-indigo-200 blur-2xl"
+			>
+			</div> -->
+
+			<!-- <div
+				class="absolute right-56 top-10 -z-10 h-96 w-96 bg-gradient-radial from-purple-200 blur-2xl"
+			>
+			</div> -->
+
+			<div class="max-w-sm md:max-w-max lg:col-span-1 ml-20">
+				<div class="flex flex-col">
+					<h1
+						class="text-center text-3xl font-bold text-light100 [text-wrap:balance] lg:text-start lg:text-4xl lg:tracking-tight xl:text-6xl xl:tracking-tighter"
+					>
+						Data
+					</h1>
+					<span
+						class="text-center text-3xl font-bold text-light100 [text-wrap:balance] lg:text-start lg:text-4xl lg:tracking-tight xl:text-6xl xl:tracking-tighter"
+					>
+						Engineering
+					</span>
+					<h1 class="relative text-center lg:text-start">
+						<span
+							class="relative inline-block text-center text-3xl font-bold text-light400 [text-wrap:balance] before:absolute before:-inset-1 lg:text-start lg:text-4xl lg:tracking-tight xl:text-6xl xl:tracking-tighter"
+						>
+							
+								<span class="relative text-yellow50">Solutions</span>
+							
+						</span>
+					</h1>
+				</div>
+				<p
+					class="mt-4 max-w-lg text-center text-lg text-light400 [text-wrap:balance] lg:text-start"
+				>
+					Talking about data solutions for your business, regardless of the industry!
+				</p>
+
+				<div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+					<Link
+					href="#feature-projects"
+					class="flex items-center justify-center gap-1 bg-yellow50 hover:bg-yellow40"
+					rel="noopener">
+					
+						See Projects
+					</Link>
+				</div>
+			</div>
+			<div class="w-96 h-96 py-3 lg:col-span-2 lg:-mr-44">
+	
+				
+					<LottieAnimation src="/animations/animation-v2.json"
+					autoplay={true} 
+					loop={true}    
+					 />
+					
+					 
+				
+			</div>
+		</main>
+	</Container>
+</div>

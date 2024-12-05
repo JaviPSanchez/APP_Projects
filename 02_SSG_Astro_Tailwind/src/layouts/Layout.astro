@@ -1,0 +1,70 @@
+---
+import { ViewTransitions } from 'astro:transitions'
+import { SEO } from 'astro-seo'
+import Footer from '@components/footer.astro'
+import Navbar from '@components/navbar/navbar.astro'
+import '@fontsource-variable/urbanist'
+
+interface Props {
+	title?: string
+	footerMargin?: boolean
+	footerVisibility?: boolean
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString()
+
+const resolvedImageWithDomain = new URL('/opengraph.jpg', Astro.site).toString()
+
+const { title, footerMargin = true, footerVisibility = false } = Astro.props
+
+const makeTitle = title ? title + ' | ' + 'Atalaya Digital' : 'Atalaya Digital - SaaS Startup'
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Digital Solutions" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<link rel="manifest" crossorigin="use-credentials" href="/manifest.json" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<SEO
+			title={makeTitle}
+			description="Atalaya Digital - SAAS & Startup Website Dashboard."
+			canonical={canonicalURL}
+			twitter={{
+				creator: '@atalayaDev',
+				site: '@atalayaDigital',
+				card: 'summary_large_image'
+			}}
+			openGraph={{
+				basic: {
+					url: canonicalURL,
+					type: 'website',
+					title: `Atalaya Digital - SAAS & Startup Website Dashboard.`,
+					image: resolvedImageWithDomain
+				},
+				image: {
+					alt: 'Atalaya Digital Homepage Screenshot'
+				}
+			}}
+		/>
+		<style is:global>
+			/* Improve Page speed */
+			/* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+			img {
+				content-visibility: auto;
+			}
+		</style>
+		<ViewTransitions />
+	</head>
+	<body class="bg-purple100 font-urba">
+		<Navbar />
+		<slot />
+
+		<Footer margin={footerMargin} visible={footerVisibility}/>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+---
+import Layout from '@layouts/Layout.astro'
+import FeatureAlt from '@components/feature-alt.astro'
+import FeatureProjects from "@components/feature-projects.astro";
+import Features from "@components/features.astro";
+import Hero from '@components/hero.astro'
+import Container from '@components/container.astro'
+import Logos from '@components/logos.astro'
+import Articles from "@components/articles.astro";
+import About from "@components/about.astro"
+
+---
+
+<Layout title="Atalaya Digital - Data Projects" footerMargin={false}>
+	<Hero />
+	<Container>
+		<Logos />
+		<About/>
+		<FeatureAlt />
+	</Container>
+	<Articles />
+	<Container>
+		<FeatureProjects id="feature-projects"/>
+		<Features />
+	</Container>
+	<!-- <Cta /> -->
+
+	<!-- Include the smooth scroll script -->
+	<script src="/scroll.js" type="module" />
+</Layout>

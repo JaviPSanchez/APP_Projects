@@ -1,0 +1,20 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Container from '@components/container.astro'
+import Questions from '@components/questions.astro'
+---
+
+<Layout title="Pricing">
+	<Container>
+		<!-- <Sectionhead>
+			<Fragment slot="title">Pricing</Fragment>
+			<Fragment slot="desc"> Simple & Predictable pricing. No Surprises. </Fragment>
+		</Sectionhead>
+
+		<div class="mx-auto mt-12 grid max-w-screen-lg gap-10 md:grid-cols-3">
+			{pricing.map((item) => <Pricing plan={item} />)}
+		</div>
+		<ComparePricing /> -->
+		<Questions />
+	</Container>
+</Layout>

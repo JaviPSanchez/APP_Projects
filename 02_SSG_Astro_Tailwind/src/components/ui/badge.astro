@@ -1,0 +1,16 @@
+---
+const { color = 'DEFAULT', class: className } = Astro.props
+
+const colors = {
+	DEFAULT: 'bg-gray-100 border-gray-200 border text-gray-800',
+	indigo: 'bg-indigo-100 border-indigo-200 border text-indigo-600',
+	orange: 'bg-orange-100 border-orange-200 border text-orange-600',
+	purple: 'bg-purple-100 border-purple-200 border text-purple-600',
+	yellow: 'bg-yellow50 border-none text-light400',
+	white: ' border-none text-yellow50 '
+}
+---
+
+<span class:list={[colors[color], className, ' rounded-full py-1 text-xs font-medium']}>
+	<slot />
+</span>

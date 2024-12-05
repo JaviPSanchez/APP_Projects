@@ -1,0 +1,42 @@
+---
+// Define a type for the expected URL object
+type PaginationProps = {
+	url: {
+		prev?: string
+		next?: string
+	}
+}
+
+// Assuming this component receives 'url' as a prop directly.
+interface Props {
+	url: PaginationProps['url']
+}
+
+// Accessing props directly without calling as a function
+const { url }: Props = Astro.props
+---
+
+<div class="mt-10 flex items-center justify-center gap-4">
+	{
+		url.prev && (
+			<a
+				class="rounded-md bg-yellow50 px-5 py-2 text-white transition hover:bg-yellow40"
+				href={url.prev}
+				title="Go to Previous"
+			>
+				&larr; Prev
+			</a>
+		)
+	}
+	{
+		url.next && (
+			<a
+				class="rounded-md bg-yellow50 px-5 py-2 text-white transition hover:bg-yellow40"
+				href={url.next}
+				title="Go to Next"
+			>
+				Next &rarr;
+			</a>
+		)
+	}
+</div>

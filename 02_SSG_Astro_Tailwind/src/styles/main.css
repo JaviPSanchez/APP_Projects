@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Urbanist Variants";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("/fonts/urbanist-latin-ext-400-normal.woff2") format("woff2");
+  }
+}
