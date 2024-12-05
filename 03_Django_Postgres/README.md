@@ -2,29 +2,14 @@
 
 ## Python Environment Setup
 
-1. **Start Poetry projectn**
+1. **Run flake8**
 
    ```bash
-   poetry init
+   docker compose run --rm app sh -c "flake8"
    ```
 
-2. **Add django**
+1. **Create Django Project**
 
    ```bash
-   poetry add django
-   ```
-
-3. **Activate venv or close venv**
-
-   ```bash
-   poetry shell
-   exit
-   ```
-
-4. **Create access token in Docker Hub**
-
-5. **Create access token in Docker Hub**
-
-   ```bash
-    django-admin startproject recipes .
+   docker compose run --rm app sh -c "django-admin startproject app ."
    ```
