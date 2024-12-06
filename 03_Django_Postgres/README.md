@@ -38,7 +38,7 @@ This project build a Backend for a recipe APP with the following features:
 3. **Run Black**
 
    ```bash
-   docker compose run --rm app sh -c "black"
+   docker compose run --rm app sh -c "black app"
    ```
 
 4. **Create Django Project**
