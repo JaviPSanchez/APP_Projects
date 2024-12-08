@@ -1,3 +1,6 @@
+"""
+URL mappings for the user app.
+"""
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularSwaggerView,
@@ -16,4 +19,5 @@ urlpatterns = [
         name='api-docs',
     ),
     path('api/user/', include('user.urls')),
+    path('api/recipe/', include('recipe.urls')),
 ]

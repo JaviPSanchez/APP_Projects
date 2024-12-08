@@ -75,9 +75,5 @@ This project build a Backend for a recipe APP with the following features:
 8. **Create Superuser**
 
    ```bash
-   docker compose run --rm app sh -c "python manage.py makemigrations"
-   ```
-
-   ```bash
    docker compose run --rm app sh -c "python manage.py createsuperuser"
    ```
