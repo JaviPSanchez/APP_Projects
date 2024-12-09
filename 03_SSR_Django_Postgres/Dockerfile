@@ -1,4 +1,4 @@
-FROM python:3.9-alpine3.13
+FROM python:3.12.8-alpine3.20
 LABEL maintainer="atalaya.digital"
 
 ENV PYTHONUNBUFFERED=1
@@ -25,7 +25,11 @@ RUN python -m venv /py && \
     adduser \
         --disabled-password \
         --no-create-home \
-        django-user
+        django-user && \
+    mkdir -p /vol/web/media && \
+    mkdir -p /vol/web/static && \
+    chown -R django-user:django-user /vol && \
+    chmod -R 755 /vol
 
 ENV PATH="/py/bin:$PATH"
 
