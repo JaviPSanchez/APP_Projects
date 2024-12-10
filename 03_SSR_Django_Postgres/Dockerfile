@@ -26,15 +26,15 @@ RUN python -m venv /py && \
     adduser \
         --disabled-password \
         --no-create-home \
-        javipalosanchez && \
+        javipalosanchez1 && \
     mkdir -p /vol/web/media && \
     mkdir -p /vol/web/static && \
-    chown -R javipalosanchez:javipalosanchez /vol && \
+    chown -R javipalosanchez1:javipalosanchez1 /vol && \
     chmod -R 755 /vol && \
     chmod -R +x /scripts
 
 ENV PATH="/scripts:/py/bin:$PATH"
 
-USER javipalosanchez
+USER javipalosanchez1
 
 CMD ["run.sh"]

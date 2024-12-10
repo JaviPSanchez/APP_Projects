@@ -26,10 +26,18 @@ This project build a Backend for a recipe APP with the following features:
 
 ## 03: Local Development Usage
 
-1. **Build & Run container**
+1. **Build, Run & Stop containers**
 
    ```bash
    docker compose up --build
+   ```
+
+   ```bash
+   docker compose down
+   ```
+
+   ```bash
+   docker compose down --volumes
    ```
 
 2. **Run flake8**
@@ -82,6 +90,14 @@ This project build a Backend for a recipe APP with the following features:
 
    ```bash
    docker compose -f docker-compose-production.yml up
+   ```
+
+   ```bash
+   docker compose -f docker-compose-production.yml run --rm app sh -c "python manage.py createsuperuser"
+   ```
+
+   ```bash
+   docker compose -f docker-compose-production.yml logs
    ```
 
 10. **Install Docker on Ubuntu**
