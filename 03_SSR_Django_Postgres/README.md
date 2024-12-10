@@ -26,7 +26,7 @@ This project build a Backend for a recipe APP with the following features:
 
 ## 03: Local Development Usage
 
-1. **Build & Run conatiner**
+1. **Build & Run container**
 
    ```bash
    docker compose up --build
@@ -78,19 +78,13 @@ This project build a Backend for a recipe APP with the following features:
    docker compose run --rm app sh -c "python manage.py createsuperuser"
    ```
 
-9. **Create Superuser**
+9. **Run Docker Production**
 
    ```bash
-   docker compose run --rm app sh -c "python manage.py createsuperuser"
+   docker compose -f docker-compose-production.yml up
    ```
 
-10. **Run Docker Production**
-
-    ```bash
-    docker compose -f docker-compose-production.yml up
-    ```
-
-11. **Install Docker on Ubuntu**
+10. **Install Docker on Ubuntu**
 
     ```bash
     sudo apt-get update

@@ -32,7 +32,7 @@ services:
     depends_on:
       - app
     ports:
-      - 8030:8000 # 80 local machine mapping to 8000 in running host (container)
+      - 80:8000 # 80 local machine mapping to 8000 in running host (container)
     volumes:
       - static-data:/vol/static
 
