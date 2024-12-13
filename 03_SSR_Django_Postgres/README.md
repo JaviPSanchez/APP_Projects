@@ -13,7 +13,7 @@ This project build a Backend for a recipe APP with the following features:
 7. Flake8 and Black for linting and formatting
 8. Docker
 9. CI/CD GitHub Actions
-10. Deployment to AWS
+10. Deployment to GCP
 
 ## 02: Future Updates
 
@@ -21,8 +21,8 @@ This project build a Backend for a recipe APP with the following features:
 2. Poetry
 3. Social Auth
 4. MFA
-5. Deployment to GCP
-6. React Frontend
+5. Deployment to AWS
+6. UI
 
 ## 03: Local Development Usage
 
@@ -90,6 +90,14 @@ This project build a Backend for a recipe APP with the following features:
 
    ```bash
    docker compose -f docker-compose-production.yml up
+   ```
+
+   ```bash
+   docker compose -f docker-compose-production.yml build app
+   ```
+
+   ```bash
+   docker compose -f docker-compose-production.yml up --no-deps -d app
    ```
 
    ```bash

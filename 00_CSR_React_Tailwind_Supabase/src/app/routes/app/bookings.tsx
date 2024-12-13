@@ -1,17 +1,19 @@
-// Bookings.tsx
-import React from 'react';
-
 import { Heading } from '@/components/ui/heading';
 import { Row } from '@/components/ui/row';
+import BookingTable from '@/features/bookings/booking-table';
 
 export const Bookings: React.FC = () => {
   return (
-    <div className="flex p-4">
-      <Heading type="h1">DASHBOARD</Heading>
-      <Row>
-        <p>Bookings</p>
+    <>
+      <Row type="horizontal">
+        <Heading type="h1">All bookings</Heading>
+        <p>TEST</p>
       </Row>
-    </div>
+
+      <Row>
+        <BookingTable />
+      </Row>
+    </>
   );
 };
 

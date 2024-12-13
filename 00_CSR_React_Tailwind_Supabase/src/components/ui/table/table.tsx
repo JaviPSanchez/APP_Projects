@@ -1,12 +1,6 @@
 // Libraries
-import React, {
-  createContext,
-  useContext,
-  ReactNode,
-  CSSProperties,
-} from 'react';
+import { createContext, useContext, ReactNode, CSSProperties } from 'react';
 
-// Components
 import { Empty } from '@/components/ui/empty';
 
 // 1) Create the context with an undefined initial value
@@ -103,7 +97,23 @@ function Body<T>({ data, render }: BodyProps<T>) {
   return <section className="my-1">{data.map(render)}</section>;
 }
 
+// Define the props for the Row component
+interface FooterProps {
+  children: ReactNode;
+}
+
+function Footer({ children }: FooterProps) {
+  return (
+    <section
+      className={`flex justify-center bg-color-grey-50 p-3 ${children ? '' : 'hidden'}`}
+    >
+      {children}
+    </section>
+  );
+}
+
 // 4) Attach subcomponents to Table
 Table.Header = Header;
 Table.Body = Body;
 Table.Row = Row;
+Table.Footer = Footer;

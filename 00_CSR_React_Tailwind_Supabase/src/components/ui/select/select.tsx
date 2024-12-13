@@ -21,9 +21,9 @@ export const Select: React.FC<SelectProps> = ({
 }) => {
   return (
     <select
-      className={`rounded-md px-3 py-2 text-lg font-medium shadow-sm ${
+      className={`rounded-md text-lg font-medium shadow-sm ${
         type === 'white' ? 'border-gray-100' : 'border-gray-300'
-      } bg-gray-50`}
+      } bg-color-grey-0`}
       value={value}
       onChange={onChange}
       {...props}

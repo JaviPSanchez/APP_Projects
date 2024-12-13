@@ -13,7 +13,8 @@ export function useCreateCabin() {
       regular_price: number;
       discount: number;
       description: string;
-      image: File;
+      image: File | string;
+      // image: File;
     };
     id?: string | null;
   };

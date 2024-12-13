@@ -11,6 +11,7 @@ interface FilterProps {
 }
 
 export const Filter: React.FC<FilterProps> = ({ filterField, options }) => {
+  // Give as the state of the URL
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFilter = searchParams.get(filterField) || options[0].value;
 
@@ -22,12 +23,12 @@ export const Filter: React.FC<FilterProps> = ({ filterField, options }) => {
   };
 
   return (
-    <div className="flex gap-1 rounded-sm border border-color-grey-100 bg-color-grey-0 p-1 shadow-sm">
+    <div className="flex gap-1 rounded-lg border border-color-grey-100 bg-color-grey-0 p-1 shadow-sm">
       {options.map(option => (
         <button
           key={option.value}
           onClick={() => handleClick(option.value)}
-          className={`rounded-sm px-2 py-2.5 text-sm font-medium transition-colors duration-300 ${
+          className={`rounded-lg px-3.5 py-2.5 text-lg font-medium transition-colors duration-300 ${
             option.value === currentFilter
               ? 'bg-color-brand-600 text-color-brand-50'
               : 'bg-color-grey-0 text-black'

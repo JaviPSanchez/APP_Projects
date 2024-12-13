@@ -28,6 +28,7 @@ export const SortBy: React.FC<SortByProps> = ({ options }) => {
       type="white"
       value={sortBy}
       onChange={handleChange}
+      className="rounded-lg border border-color-grey-100 bg-color-grey-0 p-3.5 text-lg font-medium text-black shadow-sm transition-colors duration-300 hover:bg-color-grey-50 disabled:cursor-not-allowed"
     />
   );
 };

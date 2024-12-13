@@ -33,18 +33,23 @@ export const CabinRow: React.FC<CabinRowProps> = ({ cabin }) => {
   } = cabin;
 
   function handleDuplicate() {
-    let processedImage: File | null = null;
+    // const processedImage: File | null = null;
+    let processedImage: any = null;
+    // console.log(image);
 
-    if (typeof image === 'string') {
-      // Handle the string case; if you can't convert it to File, decide what to do
-      console.error(
-        'Image URL cannot be converted to File. Handle accordingly.',
-      );
-    } else if (image instanceof File) {
-      processedImage = image; // Directly use the File
-    } else {
-      console.error('Image is undefined or of an unexpected type.');
-    }
+    // if (typeof image === 'string') {
+    //   // Handle the string case; if you can't convert it to File, decide what to do
+    //   processedImage = image; // Directly use the File
+    //   console.error(
+    //     'Image URL cannot be converted to File. Handle accordingly.',
+    //   );
+    // } else if (image instanceof File) {
+    //   processedImage = image; // Directly use the File
+    // } else {
+    //   console.error('Image is undefined or of an unexpected type.');
+    // }
+
+    processedImage = image;
 
     // Use default values if the properties are undefined
     const maxCapacity = max_capacity ?? 0;
