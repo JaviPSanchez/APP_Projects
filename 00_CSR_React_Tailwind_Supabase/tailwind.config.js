@@ -75,7 +75,7 @@ module.exports = {
       },
 
       gridTemplateColumns: {
-        'dashboard-layout': '12rem 1fr',
+        'dashboard-layout': '20rem 1fr',
         'form-row': '16rem 1fr',
       },
       gridTemplateRows: {

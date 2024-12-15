@@ -22,7 +22,7 @@ export const MainNav = () => {
           end={item.name !== 'Dash'}
           className={({ isActive }) =>
             cn(
-              'flex flex-row text-color-grey-600 hover:bg-color-grey-100 hover:text-color-brand-600 group w-full items-center p-2 text-base font-medium rounded-lg',
+              'flex flex-row text-color-grey-600 hover:bg-color-grey-100 hover:text-color-brand-600 group w-full items-center p-2 text-xl font-medium rounded-lg',
               isActive && 'bg-color-grey-100 text-color-brand-600',
             )
           }
@@ -31,7 +31,7 @@ export const MainNav = () => {
             <>
               <item.icon
                 className={cn(
-                  'w-6 h-6 mr-4 text-color-grey-400 transition duration-300',
+                  'w-8 h-8 mr-4 text-color-grey-400 transition duration-300',
                   isActive
                     ? 'text-color-brand-600'
                     : 'group-hover:text-color-brand-600',

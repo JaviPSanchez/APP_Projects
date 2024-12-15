@@ -1,4 +1,3 @@
-import { bookings } from '@/assets';
 import { Empty } from '@/components/ui/empty';
 import { Menus } from '@/components/ui/menus';
 import { Pagination } from '@/components/ui/pagination';
@@ -11,7 +10,6 @@ import { useBookings } from '@/features/bookings/hooks/use-bookings';
 
 function BookingTable() {
   const { bookings, isPending, count } = useBookings();
-  console.log(bookings);
 
   if (isPending) return <Spinner />;
 

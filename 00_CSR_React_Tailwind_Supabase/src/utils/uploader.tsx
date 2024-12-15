@@ -1,11 +1,10 @@
 import { isFuture, isPast, isToday } from 'date-fns';
 import { useState } from 'react';
 
-import { bookings, cabins, guests } from '../assets/index';
-import { Button } from '../components/ui/button';
-import supabase from '../services/api-supabase';
-
-import { subtractDates } from './format';
+import { bookings, cabins, guests } from '@/assets/index';
+import { Button } from '@/components/ui/button';
+import supabase from '@/services/api-supabase';
+import { subtractDates } from '@/utils/format';
 
 // async functions to delete data
 
@@ -62,14 +61,14 @@ async function createBookings() {
   const allCabinIds = cabinsIds.map(cabin => cabin.id);
 
   const finalBookings = bookings.map(booking => {
-    const cabin = cabins[booking.cabinId - 1];
+    const cabin = cabins[booking.cabin_id - 1];
     // Convert date strings to numbers if necessary
-    const endDateNum = new Date(booking.endDate).getTime();
-    const startDateNum = new Date(booking.startDate).getTime();
+    const endDateNum = new Date(booking.end_date).getTime();
+    const startDateNum = new Date(booking.start_date).getTime();
     const numNights = subtractDates(endDateNum, startDateNum);
-    const cabinPrice = numNights * (cabin.regularPrice - cabin.discount);
-    const extrasPrice = booking.hasBreakfast
-      ? numNights * 15 * booking.numGuests
+    const cabinPrice = numNights * (cabin.regular_price - cabin.discount);
+    const extrasPrice = booking.has_breakfast
+      ? numNights * 15 * booking.num_guests
       : 0; // hardcoded breakfast price
 
     const totalPrice = cabinPrice + extrasPrice;
@@ -77,36 +76,37 @@ async function createBookings() {
     let status;
 
     if (
-      isPast(new Date(booking.endDate)) &&
-      !isToday(new Date(booking.endDate))
+      isPast(new Date(booking.end_date)) &&
+      !isToday(new Date(booking.end_date))
     ) {
       status = 'checked-out';
     }
 
     if (
-      isFuture(new Date(booking.startDate)) ||
-      isToday(new Date(booking.startDate))
+      isFuture(new Date(booking.start_date)) ||
+      isToday(new Date(booking.start_date))
     ) {
       status = 'unconfirmed';
     }
 
     if (
-      (isFuture(new Date(booking.endDate)) ||
-        isToday(new Date(booking.endDate))) &&
-      isPast(new Date(booking.startDate)) &&
-      !isToday(new Date(booking.startDate))
+      (isFuture(new Date(booking.end_date)) ||
+        isToday(new Date(booking.end_date))) &&
+      isPast(new Date(booking.start_date)) &&
+      !isToday(new Date(booking.start_date))
     ) {
       status = 'checked-in';
     }
 
+    // Return object with snake_case column names
     return {
       ...booking,
-      numNights,
-      cabinPrice,
-      extrasPrice,
-      totalPrice,
-      guestId: allGuestIds[booking.guestId - 1],
-      cabinId: allCabinIds[booking.cabinId - 1],
+      num_nights: numNights,
+      cabin_price: cabinPrice,
+      extras_price: extrasPrice,
+      total_price: totalPrice,
+      guest_id: allGuestIds[booking.guest_id - 1],
+      cabin_id: allCabinIds[booking.cabin_id - 1],
       status,
     };
   });
@@ -116,7 +116,7 @@ async function createBookings() {
   if (error) console.log(error.message);
 }
 
-function Uploader() {
+export const Uploader = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   async function uploadAll() {
@@ -142,27 +142,14 @@ function Uploader() {
   }
 
   return (
-    <div
-      style={{
-        marginTop: 'auto',
-        backgroundColor: '#e0e7ff',
-        padding: '8px',
-        borderRadius: '5px',
-        textAlign: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '8px',
-      }}
-    >
-      <h3>SAMPLE DATA</h3>
-      <Button onClick={uploadAll} disabled={isLoading}>
+    <div className="mt-auto flex w-fit flex-col items-center gap-4 rounded-md bg-color-indigo-100 p-4 text-center">
+      <h3 className="text-xl font-semibold">SAMPLE DATA</h3>
+      <Button size={'lg'} onClick={uploadAll} disabled={isLoading}>
         Upload ALL
       </Button>
-      <Button onClick={uploadBookings} disabled={isLoading}>
+      <Button size={'lg'} onClick={uploadBookings} disabled={isLoading}>
         Upload bookings ONLY
       </Button>
     </div>
   );
-}
-
-export default Uploader;
+};

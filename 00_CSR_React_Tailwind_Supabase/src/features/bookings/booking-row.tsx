@@ -52,8 +52,8 @@ const BookingRow: React.FC<BookingRowProps> = ({
   },
 }) => {
   const navigate = useNavigate();
-  // const { checkout, isCheckingOut } = useCheckout();
-  // const { deleteBooking, isDeleting } = useDeleteBooking();
+  const { checkout, isCheckingOut } = useCheckout();
+  const { deleteBooking, isDeleting } = useDeleteBooking();
 
   // Define the status to corresponding color mapping
   const statusToTagName: Record<string, 'blue' | 'green' | 'silver'> = {
@@ -110,7 +110,7 @@ const BookingRow: React.FC<BookingRowProps> = ({
               </Menus.Button>
             )}
 
-            {/* {status === 'checked-in' && (
+            {status === 'checked-in' && (
               <Menus.Button
                 icon={<SquareArrowUp />}
                 onClick={() => checkout(booking_id)}
@@ -118,7 +118,7 @@ const BookingRow: React.FC<BookingRowProps> = ({
               >
                 Check out
               </Menus.Button>
-            )} */}
+            )}
 
             <Modal.Open opens="delete">
               <Menus.Button icon={<Trash2 />}>Delete booking</Menus.Button>
@@ -126,13 +126,13 @@ const BookingRow: React.FC<BookingRowProps> = ({
           </Menus.List>
         </Menus.Menu>
 
-        {/* <Modal.Window name="delete">
+        <Modal.Window name="delete">
           <ConfirmDelete
             resourceName="booking"
             disabled={isDeleting}
             onConfirm={() => deleteBooking(booking_id)}
           />
-        </Modal.Window> */}
+        </Modal.Window>
       </Modal>
     </Table.Row>
   );
