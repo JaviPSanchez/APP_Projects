@@ -1,0 +1,17 @@
+### Index Route
+GET http://localhost:3000/
+
+### Tours
+GET http://localhost:3000/api/v1/tours
+
+### Tour by ID
+GET http://localhost:3000/api/v1/tours/16
+
+### Update by ID
+PATCH  http://localhost:3000/api/v1/tours/1
+
+### Create Tour
+POST http://localhost:3000/api/v1/tours
+
+### Delete tour
+DELETE http://localhost:3000/api/v1/tours/6

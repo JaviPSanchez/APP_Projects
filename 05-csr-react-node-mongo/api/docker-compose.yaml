@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  # MongoDB Service
+  mongo:
+    container_name: mongo_natours
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    restart: always
+    volumes:
+      - volume_mongo_natours:/data/db
+    networks:
+      - natours-app
+  # Node Service
+  express_server:
+    container_name: server_natours
+    restart: always
+    build: ./
+    volumes:
+      - ./src:/starter/src
+    ports:
+      - '5000:5000'
+    depends_on:
+      - mongo
+    environment:
+      NODE_ENV: development
+      PORT: 5000
+      USERNAME: javi
+      PASSWORD: 123456
+    networks:
+      - natours-app
+
+networks:
+  natours-app:
+    driver: bridge
+
+volumes:
+  volume_mongo_natours: {}
