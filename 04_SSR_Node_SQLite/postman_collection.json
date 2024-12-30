@@ -1,0 +1,340 @@
+{
+	"info": {
+		"_postman_id": "79e9f570-e90d-4dd2-b4d7-bacc1e19a378",
+		"name": "Node-SQLite-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17258260"
+	},
+	"item": [
+		{
+			"name": "API-Health",
+			"item": [
+				{
+					"name": "check-connection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3020/api/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"api",
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Javier_Palomino\",\r\n    \"password\": \"Test1234@\",\r\n    \"email\": \"test@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3020/users/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"Test1234@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3020/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3020/events/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"events",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3020/events/elaplodmi",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"events",
+								"elaplodmi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Img1emZkenV3OSIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE3MzU1NTE5MzgsImV4cCI6MTczNTYzODMzOH0.YjUJLK2Osg-ojdjzVnMjBO55O_ocmgwkWqlwupzsVts",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Walking in the forest",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Take an amazing tour in the Pirineos",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "12, rue de la liberte",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2024-05-20T17:00:00",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/S:/04_Software_Engineering/2_Full_Stack/04-Node/04-copilot-node-project/assets/trekking1.webp"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3020/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Event",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Img1emZkenV3OSIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE3MzU1NTMxMjUsImV4cCI6MTczNTYzOTUyNX0.pHcbrAxKfmuiTDM2fKYOyWnA80EzfJSbzudK7X6Usdk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Walking in the forest UPDATE",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Take an amazing tour in the Pirineos",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "12, rue de la liberte",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2024-05-20T17:00:00",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/S:/04_Software_Engineering/2_Full_Stack/04-Node/04-copilot-node-project/assets/trekking2.webp"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3020/events/lz2rlrcrs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"events",
+								"lz2rlrcrs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Event",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Img1emZkenV3OSIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE3MzU1NTMxMjUsImV4cCI6MTczNTYzOTUyNX0.pHcbrAxKfmuiTDM2fKYOyWnA80EzfJSbzudK7X6Usdk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3020/events/lz2rlrcrs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"events",
+								"lz2rlrcrs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Event Registation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJoM3ZvZGZrZyIsImVtYWlsIjoidGVzdDJAZ21haWwuY29tIiwiaWF0IjoxNzM1NTQ1NzM5LCJleHAiOjE3MzU2MzIxMzl9.XB5z85CcUKk6Uw6X1KkwQ-DRAwKhH-_y6FiIRIoZm-k",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3020/events/ta2422a81/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"events",
+								"ta2422a81",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Event Registation",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJoM3ZvZGZrZyIsImVtYWlsIjoidGVzdDJAZ21haWwuY29tIiwiaWF0IjoxNzM1NTQ1NzM5LCJleHAiOjE3MzU2MzIxMzl9.XB5z85CcUKk6Uw6X1KkwQ-DRAwKhH-_y6FiIRIoZm-k",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3020/events/ta2422a81/unregister",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"events",
+								"ta2422a81",
+								"unregister"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
