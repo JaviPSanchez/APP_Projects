@@ -41,9 +41,17 @@ jobs:
       - name: Test
         run: |
           docker build -t app .
-          docker run --network=host --rm app sh -c "cd /src && python manage.py wait_for_db && python manage.py test"
+          docker run --network=host --rm \
+            -e DB_NAME=receipedb \
+            -e DB_USER=postgres \
+            -e DB_PASS=postgres \
+            -e DB_HOST=localhost \
+            -e SECRET_KEY=django-insecure-test-key-for-github-actions \
+            -e ALLOWED_HOSTS="127.0.0.1,localhost" \
+            app sh -c "cd /src && python manage.py wait_for_db && python manage.py test"
       - name: Linting
         run: docker run --rm app sh -c "cd /src && flake8"
       - name: Formatter
         run: |
-          docker run --rm -v "$(pwd)/src:/src" app sh -c "cd /src && chmod -R 777 . && black ."
+          python -m pip install black
+          black 03-django-postgres/src/
