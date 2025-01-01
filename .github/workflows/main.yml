@@ -32,7 +32,7 @@ jobs:
       DB_NAME: receipedb
       DB_USER: postgres
       DB_PASS: postgres
-      DB_HOST: localhost
+      DB_HOST: postgres-test
       DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
       DJANGO_ALLOWED_HOSTS: "127.0.0.1,localhost"
 
@@ -44,8 +44,12 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Create docker network
+        run: docker network create app_network || true
+      - name: Connect postgres to network
+        run: docker network connect app_network postgres-test || true
       - name: Test
-        run: docker compose -f docker-compose.yml run --rm app sh -c "cd /src && python manage.py wait_for_db && python manage.py test"
+        run: docker compose -f docker-compose.yml run --rm --network app_network app sh -c "cd /src && python manage.py wait_for_db && python manage.py test"
       - name: Linting
         run: docker compose run --rm app sh -c "cd /src && flake8"
       - name: Formatter
