@@ -33,7 +33,7 @@ jobs:
       DB_USER: postgres
       DB_PASS: postgres
       DB_HOST: postgres-test
-      DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+      DJANGO_SECRET_KEY: "django-insecure-test-key-for-github-actions"
       DJANGO_ALLOWED_HOSTS: "127.0.0.1,localhost"
 
     steps:
@@ -57,6 +57,7 @@ jobs:
                 - DB_NAME=receipedb
                 - DB_USER=postgres
                 - DB_PASS=postgres
+                - DJANGO_SECRET_KEY=django-insecure-test-key-for-github-actions
               networks:
                 - app_network
           networks:
