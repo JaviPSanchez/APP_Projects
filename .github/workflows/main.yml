@@ -58,6 +58,7 @@ jobs:
                 - DB_USER=postgres
                 - DB_PASS=postgres
                 - DJANGO_SECRET_KEY=django-insecure-test-key-for-github-actions
+                - DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost
               networks:
                 - app_network
           networks:
