@@ -14,23 +14,24 @@ jobs:
         image: postgres:15.3-alpine
         env:
           POSTGRES_DB: receipedb
-          POSTGRES_USER: ${{ secrets.DB_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.DB_PASS }}
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
         ports:
           - 5432:5432
         options: >-
-          --health-cmd pg_isready
+          --health-cmd "pg_isready -U postgres"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+          --name postgres-test
 
     defaults:
       run:
         working-directory: 03-django-postgres
     env:
       DB_NAME: receipedb
-      DB_USER: ${{ secrets.DB_USER }}
-      DB_PASS: ${{ secrets.DB_PASS }}
+      DB_USER: postgres
+      DB_PASS: postgres
       DB_HOST: localhost
       DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
       DJANGO_ALLOWED_HOSTS: "127.0.0.1,localhost"
