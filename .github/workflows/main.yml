@@ -52,6 +52,11 @@ jobs:
         run: |
           echo "services:
             app:
+              environment:
+                - DB_HOST=postgres-test
+                - DB_NAME=receipedb
+                - DB_USER=postgres
+                - DB_PASS=postgres
               networks:
                 - app_network
           networks:
