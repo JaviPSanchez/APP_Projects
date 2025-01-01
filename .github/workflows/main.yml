@@ -9,6 +9,21 @@ jobs:
   test-lint:
     name: Test and Lint
     runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:15.3-alpine
+        env:
+          POSTGRES_DB: receipedb
+          POSTGRES_USER: ${{ secrets.DB_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASS }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     defaults:
       run:
         working-directory: 03-django-postgres
@@ -16,6 +31,7 @@ jobs:
       DB_NAME: receipedb
       DB_USER: ${{ secrets.DB_USER }}
       DB_PASS: ${{ secrets.DB_PASS }}
+      DB_HOST: localhost
       DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
       DJANGO_ALLOWED_HOSTS: "127.0.0.1,localhost"
 
@@ -27,16 +43,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Start services
-        run: docker compose -f docker-compose.yml up -d
-      - name: Wait for services
-        run: sleep 10
       - name: Test
         run: docker compose -f docker-compose.yml run --rm app sh -c "cd /src && python manage.py wait_for_db && python manage.py test"
       - name: Linting
         run: docker compose run --rm app sh -c "cd /src && flake8"
       - name: Formatter
         run: docker compose run --rm app sh -c "cd /src && black ."
-      - name: Cleanup
-        if: always()
-        run: docker compose -f docker-compose.yml down -v
