@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-24.04
     defaults:
       run:
-        working-directory: 03_SSR_Django_Postgres
+        working-directory: 03-django-postgres
 
     steps:
       - name: Login to Docker Hub
