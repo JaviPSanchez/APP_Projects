@@ -13,8 +13,11 @@ ENV APP_PORT=9000
 
 USER root
 
-RUN mkdir -p /vol/static && \
-    chmod 755 /vol/static && \
+# One Run layer = better caching
+RUN mkdir -p /vol/static/ && \
+    mkdir -p /vol/media/ && \
+    chmod 755 /vol && \
+    chown -R nginx:nginx /vol && \
     touch /etc/nginx/conf.d/default.conf && \
     chown nginx:nginx /etc/nginx/conf.d/default.conf && \
     chmod +x /run.sh
@@ -22,5 +25,8 @@ RUN mkdir -p /vol/static && \
 VOLUME /vol/static
 
 USER nginx
+
+VOLUME /vol/static
+VOLUME /vol/media
 
 CMD ["/run.sh"]

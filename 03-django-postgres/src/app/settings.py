@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # 0 False, 1 True
 DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
 ALLOWED_HOSTS.extend(
     filter(
         None,
@@ -137,8 +137,8 @@ USE_TZ = True
 STATIC_URL = "/static/static/"
 MEDIA_URL = "/static/media/"
 
-MEDIA_ROOT = "/vol/web/media"
 STATIC_ROOT = "/vol/web/static"
+MEDIA_ROOT = "/vol/web/media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

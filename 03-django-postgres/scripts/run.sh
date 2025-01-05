@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 set -e # if any command files it crash
 
 python manage.py wait_for_db # wait for the DB
